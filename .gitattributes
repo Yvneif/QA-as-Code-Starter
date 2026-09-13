@@ -1,0 +1,7 @@
+# Normalize line endings across platforms: Prettier expects LF, so Windows
+# clones must check out LF too or format:check fails.
+* text=auto eol=lf
+
+# Windows scripts genuinely need CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
