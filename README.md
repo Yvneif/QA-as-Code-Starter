@@ -4,6 +4,16 @@ A clone-and-go Playwright + TypeScript starter template that wires a Page Object
 
 [![CI](https://github.com/Yvneif/QA-as-Code-Starter/actions/workflows/ci.yml/badge.svg)](https://github.com/Yvneif/QA-as-Code-Starter/actions/workflows/ci.yml)
 
+## Preview
+
+`npx playwright test`, end to end:
+
+![A terminal showing 15 Playwright tests passing across Chromium, Firefox, and WebKit in 19.1s](docs/images/cli-run.png)
+
+| The HTML report (`npm run report`)                                                                                | The app under test                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| ![The Playwright HTML report showing 15 passing tests across three browser projects](docs/images/html-report.png) | ![The SauceDemo product page the example tests exercise](docs/images/app-under-test.png) |
+
 ## Install
 
 Requires Node.js 18+ (tested on 22).
@@ -49,13 +59,13 @@ npm run format                           # Prettier (write) — format:check for
 
 Copy `.env.example` to `.env` to override defaults locally — `.env` is gitignored and never committed. In CI, feed these through [repository secrets](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions) instead; the workflow references them with a public-demo fallback.
 
-| Variable | Default | Purpose |
-| --- | --- | --- |
-| `BASE_URL` | `https://www.saucedemo.com` | Application under test. Point it elsewhere to retarget the whole suite. |
-| `DEMO_USERNAME` | `standard_user` | Login for the happy-path tests. |
-| `DEMO_PASSWORD` | `secret_sauce` | Password for the demo account. |
-| `DEMO_LOCKED_USERNAME` | `locked_out_user` | Used by the negative login test. |
-| `DEMO_LOCKED_PASSWORD` | `secret_sauce` | Password for the locked-out account. |
+| Variable               | Default                     | Purpose                                                                 |
+| ---------------------- | --------------------------- | ----------------------------------------------------------------------- |
+| `BASE_URL`             | `https://www.saucedemo.com` | Application under test. Point it elsewhere to retarget the whole suite. |
+| `DEMO_USERNAME`        | `standard_user`             | Login for the happy-path tests.                                         |
+| `DEMO_PASSWORD`        | `secret_sauce`              | Password for the demo account.                                          |
+| `DEMO_LOCKED_USERNAME` | `locked_out_user`           | Used by the negative login test.                                        |
+| `DEMO_LOCKED_PASSWORD` | `secret_sauce`              | Password for the locked-out account.                                    |
 
 These credentials are published by the demo site itself, so they are not secrets. For a real application: keep real values in a secret store, never in `.env.example` or the repo.
 
