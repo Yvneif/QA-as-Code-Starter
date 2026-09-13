@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export type CheckoutDetails = {
@@ -32,15 +32,9 @@ export class CheckoutPage extends BasePage {
   }
 
   async fillForm(details: CheckoutDetails): Promise<void> {
-    await this.firstNameInput.fill(details.firstName);
-    await this.lastNameInput.fill(details.lastName);
-    await this.postalCodeInput.fill(details.postalCode);
-    // The SPA can re-mount route components right after navigation, wiping a
-    // value filled mid-mount. Confirm the controlled inputs kept their values
-    // before submitting instead of racing the framework.
-    await expect(this.firstNameInput).toHaveValue(details.firstName);
-    await expect(this.lastNameInput).toHaveValue(details.lastName);
-    await expect(this.postalCodeInput).toHaveValue(details.postalCode);
+    await this.fillSticky(this.firstNameInput, details.firstName);
+    await this.fillSticky(this.lastNameInput, details.lastName);
+    await this.fillSticky(this.postalCodeInput, details.postalCode);
   }
 
   async submitForm(): Promise<void> {
